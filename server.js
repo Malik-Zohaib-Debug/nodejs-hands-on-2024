@@ -1,11 +1,16 @@
 import http from 'http';
+const PORT = process.env.PORT;
 
 const server = http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write("<h1>Hello,World!</h1>");
-    res.end();
+    // res.setHeader('Content-Type', 'text/plain');
+    // res.statusCode = 403;
+    // res.write("<h1>Hello,World!</h1>");
+    
+    //writeHead 
+    res.writeHead(500, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({message: "Server Error"}))
 })
 
-server.listen(8000, () => {
-    console.log("Server running at post 8000");
+server.listen(PORT, () => {
+    console.log(`Server running at post ${PORT}`);
 })
